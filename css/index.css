@@ -25,7 +25,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: -99;
 }
 
 .img-bg-small {
@@ -41,14 +41,16 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -98;
   display: none;
 }
 
 .navbar{
   /*position: relative;*/
+  margin-bottom: 0;
   background-color: transparent;
   border-color: transparent;
+  z-index: 99;
 }
 
 .navbar-nav li a:hover{
@@ -61,6 +63,7 @@ body {
 }
 
 .navbar-default .navbar-toggle {
+    background-color:rgba(15, 15, 15, 0.5);
     border-color: transparent;
     color: #ffffff !important;
 }
@@ -69,6 +72,7 @@ body {
   display: none;
   background-color: #151515;
   border-color: #151515;
+  z-index: 99;
 }
 
 .jumbotron {
@@ -191,6 +195,14 @@ footer .glyphicon {
 }
 
 @media screen and (max-width: 768px) {
+    body{
+      margin-top: 0;
+    }
+
+    #navbar-content-default{
+        background-color:rgba(15, 15, 15, 0.6);
+    }
+
     .img-bg-big{
       display: none;
     }

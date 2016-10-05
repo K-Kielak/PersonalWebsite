@@ -8,13 +8,19 @@ $(document).ready(function(){
    }
 
    function checkBackground(){
-     $(".img-bg-big").css("display", "none");
-     $(".img-bg-small").css("display", "none");
      if($(window).scrollTop() < 2000){
-      if($(window).width() < 768)
+      if($(window).width() < 768){
         $(".img-bg-small").css("display", "block");
-      else
+        $(".img-bg-big").css("display", "none");
+      }
+      else{
         $(".img-bg-big").css("display", "block");
+        $(".img-bg-small").css("display", "none");
+      }
+    }
+    else{
+      $(".img-bg-big").css("display", "none");
+      $(".img-bg-small").css("display", "none");
     }
    }
 
