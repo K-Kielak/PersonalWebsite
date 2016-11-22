@@ -140,19 +140,19 @@ body {
 }
 
 #linkedin:link, #linkedin:visited{
-  color: #3b5998;
+  color: #0077b5;
 }
 
 #linkedin:hover{
-  color: #8b9dc3;
+  color: #50c7f5;
 }
 
-#google:link, #google:visited{
-  color: #cd3b29;
+#twitter:link, #twitter:visited{
+  color: #4099ff;
 }
 
-#google:hover{
-  color: #ed6b49;
+#twitter:hover{
+  color: #90d9ff;
 }
 
 .flip-horizontally{
