@@ -24,13 +24,39 @@ router.get('/', function(req, res, next) {
   res.render('blog', {chosenPosts: posts}); //TODO dodaj limit na strone
 });
 
+router.get('post/:title', function(req, res, next){
+  var post = posts.filter((post) => {
+    return (post.title.toLowerCase() == req.params.title.toLowerCase());
+  })[0];
+
+  if(post){
+    res.render('post', {
+      posts: posts,
+      title: post.title,
+      intro: post.intro,
+      body: post.body,
+      date: post.date,
+      category: post.category,
+      tags: post.tags
+    });
+  }
+  else{
+    var message = "There is no such post as " + req.params.title.toLowerCase()
+    res.render('blog', {
+      chosenPosts: [],
+      errMessage: message
+    })
+  }
+});
+
 router.get('/category/:category', function(req, res, next){ //TODO
   var postsInCategory = posts.filter((post) => {
     return post.category.toLowerCase() == req.params.category.toLowerCase();
   });
 
   res.render('blog', {
-    chosenPosts: postsInCategory
+    chosenPosts: postsInCategory,
+    errMessage: 'There are no posts in category "' + req.params.category + '" :('
   });
 });
 
@@ -40,23 +66,8 @@ router.get('/tag/:tag', function(req, res, next){ //TODO
   });
 
   res.render('blog', {
-    chosenPosts: taggedPosts
-  });
-});
-
-router.get('/:date/:title', function(req, res, next){
-  const post = posts.filter((post) => {
-    return (post.date == req.params.date && post.title.toLowerCase() == req.params.title.toLowerCase());
-  })[0];
-
-  res.render('post', {
-    posts: posts,
-    title: post.title,
-    intro: post.intro,
-    body: post.body,
-    date: post.date,
-    category: post.category,
-    tags: post.tags
+    chosenPosts: taggedPosts,
+    errMessage: 'There are no posts with tag "' + req.params.tag + '" :('
   });
 });
 
