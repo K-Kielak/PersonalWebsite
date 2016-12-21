@@ -12,23 +12,8 @@
 </head>
 
 <body>
-  <nav id="navbar-fixed" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-content-fixed">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="navbar-content-fixed">
-        <ul class="nav navbar-nav">
-          <li><a href="/">HOME</a></li>
-          <li><a href="/blog">BLOG</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
+  <%- include('partials/blogNavbar') %>
 
   <div class="contaier-fluid bg-lgrey">
     <div class="container">
@@ -108,7 +93,9 @@
           </li>
       </ul>
     </div>
-    <%- include('partials/blogPanel.ejs') %>
+    <div class="col-md-4">
+      <%- include('partials/blogPanel.ejs') %>
+    </div>
   </div>
 </div>
 

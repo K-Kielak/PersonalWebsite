@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kacper Kielak - Blog">
+    <meta name="author" content="Kacper Kielak">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/blog.css"/>
+    <title>Kacper Kielak - <%= errStatus %></title>
+</head>
+
+<body>
+
+  <%- include('partials/blogNavbar') %>
+
+  <div class="contaier-fluid bg-lgrey">
+    <div class="container">
+      <div class="col-md-8">
+        <h1><%= errStatus %></h1>
+        <h3><%= errMessage %></h3>
+      </div>
+
+    <div class="col-md-4">
+      <%- include('partials/blogPanel') %>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script src="/js/jquery-3.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

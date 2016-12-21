@@ -5,12 +5,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var articles = require('./models/articles');
-
 var index = require('./routes/index');
 var blog = require('./routes/blog');
 
 var app = express();
+
+app.disable('x-powered-by');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,15 +37,18 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
-  console.log(err.message);
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  //res.locals.message = err.message;
+  //res.locals.error = req.app.get('env') === 'development' ? err : {};
+  if(!err.status){
+    err.status = 500;
+    err.message = "Internal server error";
+  }
   // render the error page
-  res.status(err.status || 500);
-  res.render('error', {
-    errMessage: "error",
-    errStatus: err.status});
+  res.render('indexError', {
+    errStatus: err.status,
+    errMessage: err.message
+  });
 });
+
 
 module.exports = app;
