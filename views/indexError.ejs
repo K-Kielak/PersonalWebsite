@@ -8,14 +8,16 @@
   <link rel="stylesheet" href="/css/blog.css"/>
   <title>Kacper Kielak - <%= errStatus %></title>
 </head>
-<body>
+<body class="bg-lgrey">
 
   <%- include('partials/blogNavbar') %>
 
-  <h1><%= errStatus %></h1>
-  <h3><%= errMessage %></h3>
-
-  <%- include('partials/footer') %>
+  <div class="contaier-fluid bg-lgrey">
+    <div class="container">
+    <h1><%= errStatus %></h1>
+    <h3><%- errMessage %></h3>
+    </div>
+  </div>
 
   <script src="/js/jquery-3.1.0.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>

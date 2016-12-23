@@ -41,7 +41,11 @@ app.use(function(err, req, res, next) {
   //res.locals.error = req.app.get('env') === 'development' ? err : {};
   if(!err.status){
     err.status = 500;
-    err.message = "Internal server error";
+    err.message = 'Unfortunately, internal server error has occured. :( <br/>'
+                + 'I will be really grateful if you contact me about the details '
+                + 'of this situation (my email adress: kielak.kacper@gmail.com). '
+                + 'In the meantime you can go back to <a href="/">HOME</a> page or to my '
+                + '<a href="/blog">BLOG</a>';
   }
   // render the error page
   res.render('indexError', {

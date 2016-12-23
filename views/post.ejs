@@ -7,15 +7,14 @@
     <meta name="author" content="Kacper Kielak">
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/blog.css"/>
-    <link rel="stylesheet" href="/css/post.css"/>
     <title><%= title %></title>
 </head>
 
 <body>
-  
+
   <%- include('partials/blogNavbar') %>
 
-  <div class="contaier-fluid bg-lgrey">
+  <div id="start" class="contaier-fluid bg-lgrey">
     <div class="container">
       <div class="col-md-8">
         <article>
@@ -34,15 +33,15 @@
 
           <img src="http://placehold.it/900x300" class="img-responsive">
           <br/>
-          <p class="lead"><%= intro + body %></p>
-          <ul class="pager">
+          <p class="lead"><%- intro + body %></p>
+          <!--<ul class="pager">
               <li class="previous">
-                  <a href="#">← Previous</a>
+                  <a href="#">← Previous</a> TODO add in the future
               </li>
               <li class="next">
                   <a href="#">Next →</a>
               </li>
-          </ul>
+          </ul>-->
           <hr>
       </article>
 

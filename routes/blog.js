@@ -4,9 +4,13 @@ var blogDB = require('./../models/blogDB')();
 
 router.use(function(req, res, next){
   blogDB.getPosts(function(err, posts){
-    if(err) throw err;
-    req.posts = posts;
-    next();
+    if(err) {
+      next(err);
+    } else{
+      req.posts = posts;
+      next();
+    }
+
   });
 });
 
@@ -92,7 +96,11 @@ router.use(function(err, req, res, next){
 
   if(!err.status){
     err.status = 500;
-    err.message = 'Internal server error';
+    err.message = 'Unfortunately, internal server error has occured. :( <br/>'
+                + 'I will be really grateful if you contact me about the details '
+                + 'of this situation (my email adress: kielak.kacper@gmail.com). '
+                + 'In the meantime you can go back to <a href="/">HOME</a> page or to my '
+                + '<a href="/blog">BLOG</a>';
   }
 
   var status = err.status;
@@ -100,9 +108,10 @@ router.use(function(err, req, res, next){
     status = "";
 
   res.render('blogError', {
+    posts: req.posts,
     errStatus: status,
     errMessage: err.message
-  })
+  });
 });
 
 module.exports = router;
