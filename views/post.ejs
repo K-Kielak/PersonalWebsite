@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kacper Kielak - Blog - <%= title %>">
+    <meta name="description" content="Kacper Kielak - Blog - <%= shortTitle %>">
     <meta name="author" content="Kacper Kielak">
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/blog.css"/>
@@ -14,7 +14,7 @@
 
   <%- include('partials/blogNavbar') %>
 
-  <div id="start" class="contaier-fluid bg-lgrey">
+  <div class="contaier-fluid bg-lgrey">
     <div class="container">
       <div class="col-md-8">
         <article>
@@ -23,7 +23,7 @@
           </h2>
           <div class="row">
               <div class="left-details col-sm-6 col-md-6">
-                <span class="glyphicon glyphicon-pencil"></span> <a href="#comments">20 Comments</a> <!--TODO implement comments-->
+                <span class="glyphicon glyphicon-pencil"></span> <a href="#comments"><%= comments.length %> comments</a>
               </div>
               <div class="right-details col-sm-6 col-md-6">
                 <span class="glyphicon glyphicon-time"></span> <%= date %>
@@ -31,9 +31,12 @@
           </div>
           <hr>
 
-          <img src="http://placehold.it/900x300" class="img-responsive">
+          <!--<img src="http://placehold.it/900x300" class="img-responsive">-->
           <br/>
-          <p class="lead"><%- intro + body %></p>
+          <p><%- intro %> </p> <!-- TODO dopracuj -->
+          <img src="/img/blog/<%= img %>" class="img-responsive"/>
+          <br/><br/>
+          <p> <%- body %></p>
           <!--<ul class="pager">
               <li class="previous">
                   <a href="#">← Previous</a> TODO add in the future
@@ -71,25 +74,17 @@
       <hr/>
 
       <ul id="comments" class="comments">
+        <% comments.forEach((comment) => { %>
           <li class="comment">
               <div class="clearfix">
-                  <h4 class="pull-left">John</h4>
-                  <p class="pull-right">9:41 PM on August 24, 2013</p>
+                  <h4 class="pull-left">comment.user</h4>
+                  <p class="pull-right">comment.date</p>
               </div>
               <p>
-                  <em>I don't believe in astrology but still your writing style is really great!</em>
+                  <em>comment.text</em>
               </p>
           </li>
-
-          <li class="comment clearfix">
-              <div class="clearfix">
-                  <h4 class="pull-left">John</h4>
-                  <p class="pull-right">9:41 PM on August 24, 2013</p>
-              </div>
-              <p>
-                  <em>I don't believe in astrology but still your writing style is really great!</em>
-              </p>
-          </li>
+        <% }); %>
       </ul>
     </div>
     <div class="col-md-4">
@@ -102,5 +97,6 @@
   <%- include('partials/footer') %>
   <script src="/js/jquery-3.1.0.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/blog.js"></script>
 </body>
 </html>

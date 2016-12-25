@@ -25,6 +25,10 @@ body {
     color: #777777 !important;
 }*/
 
+article p{
+     font-size: 18px; line-height: 27px;
+}
+
 #comments, #comments li {
     margin: 0;
     padding: 0;

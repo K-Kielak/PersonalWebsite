@@ -23,18 +23,21 @@ router.get('/', function(req, res, next) {
 
 router.get('/post/:title', function(req, res, next){
   var post = req.posts.filter((post) => {
-    return (post.title.toLowerCase() == req.params.title.toLowerCase());
+    return (post.shortTitle.toLowerCase() == req.params.title.toLowerCase());
   })[0];
 
   if(post){
     res.render('post', {
       posts: req.posts,
+      shortTitle: post.shortTitle,
       title: post.title,
       intro: post.intro,
       body: post.body,
       date: post.date,
       category: post.category,
-      tags: post.tags
+      tags: post.tags,
+      comments: post.comments,
+      img: post.img
     });
   }
   else{
