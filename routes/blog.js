@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var blogDB = require('./../models/blogDB')();
 
+const POSTS_PER_REQUEST = 10;
+
 router.use(function(req, res, next){
-  blogDB.getPosts(function(err, posts){
+  blogDB.getPosts(POSTS_PER_REQUEST, 0,function(err, posts){
     if(err) {
       next(err);
     } else{
@@ -21,9 +23,9 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/post/:title', function(req, res, next){
+router.get('/post/:shortTitle', function(req, res, next){
   var post = req.posts.filter((post) => {
-    return (post.shortTitle.toLowerCase() == req.params.title.toLowerCase());
+    return (post.shortTitle.toLowerCase() == req.params.shortTitle.toLowerCase());
   })[0];
 
   if(post){
@@ -49,7 +51,51 @@ router.get('/post/:title', function(req, res, next){
   }
 });
 
-router.get('/category/:category', function(req, res, next){ //TODO
+router.post('/post/:shortTitle/addComment', function(req, res, next){
+  var name = req.body.name,
+    email = req.body.email,
+    text = req.body.text,
+    date = new Date();
+
+  var comment = {name, email, text, date};
+  var post = req.posts.filter((post) => {
+    return (post.shortTitle.toLowerCase() == req.params.shortTitle.toLowerCase());
+  })[0];
+
+  if(post){
+    blogDB.addComment(post, comment, function(err, empty){
+      if(err)
+        next(err);
+      else
+        res.end();
+    });
+  }
+  else{
+    var err = new Error("There is no such post as " + req.params.shortTitle.toLowerCase() + " :(");
+    err.status = 1;
+
+    next(err);
+  }
+});
+
+router.get('/post/:shortTitle/getComments', function(req, res, next){
+  var post = req.posts.filter((post) => {
+    return (post.shortTitle.toLowerCase() == req.params.shortTitle.toLowerCase());
+  })[0];
+
+  if(post){
+    res.send(post.comments);
+    console.log("comments sent");
+  }
+  else{
+    var err = new Error("There is no such post as " + req.params.title.toLowerCase() + " :(");
+    err.status = 1;
+
+    next(err);
+  }
+});
+
+router.get('/category/:category', function(req, res, next){
   var posts = req.posts.filter((post) => {
     return post.category.toLowerCase() == req.params.category.toLowerCase();
   });
@@ -71,7 +117,7 @@ router.get('/category/:category', function(req, res, next){ //TODO
 
 router.get('/tag/:tag', function(req, res, next){ //TODO
   var posts = req.posts.filter((post) => {
-    return post.tags.indexOf(req.params.tag.toLowerCase()) > -1;
+    return post.tags.indexOf(req.params.tag.toLowerCase()) > -1; //TODO napraw
   });
 
   if(posts.length > 0){

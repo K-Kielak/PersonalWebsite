@@ -50,20 +50,20 @@
 
       <div class="well">
         <h4>Leave a comment</h4>
-        <form role="form" class="clearfix">
+        <form id="comment-form" class="clearfix" role="form">
           <div class="col-md-6 form-group">
               <label class="sr-only" for="name">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Name">
+              <input name="name" type="text" class="form-control" id="name" placeholder="Name">
           </div>
 
           <div class="col-md-6 form-group">
               <label class="sr-only" for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Email">
+              <input name="email" type="email" class="form-control" id="email" placeholder="Email">
           </div>
 
           <div class="col-md-12 form-group">
               <label class="sr-only" for="email">Comment</label>
-              <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
+              <textarea name="text" class="form-control" id="text" placeholder="Comment"></textarea>
           </div>
 
           <div class="col-md-12 form-group text-right">
@@ -73,8 +73,11 @@
       </div>
       <hr/>
 
+      <input type="hidden" id="comments-storage" value="<%=comments%>">
+      <input type="hidden" id="short-title" value="<%=shortTitle%>">
+
       <ul id="comments" class="comments">
-        <% comments.forEach((comment) => { %>
+      <!--  <% comments.forEach((comment) => { %>
           <li class="comment">
               <div class="clearfix">
                   <h4 class="pull-left">comment.user</h4>
@@ -84,7 +87,7 @@
                   <em>comment.text</em>
               </p>
           </li>
-        <% }); %>
+        <% }); %>-->
       </ul>
     </div>
     <div class="col-md-4">
@@ -98,5 +101,7 @@
   <script src="/js/jquery-3.1.0.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/blog.js"></script>
+  <script src="/js/jquery.form.min.js"></script>
+  <script src="/js/comments.js"></script>
 </body>
 </html>

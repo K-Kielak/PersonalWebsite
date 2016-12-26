@@ -16,12 +16,12 @@ client.connect(connection, function(err, db){
 
 module.exports = function() {
   return {
-    getPosts: function(callback){
+    getPosts: function(number, start, callback){
       postsCollection.find().toArray(callback);
-    }, //TODO customize somehow what posts
+    },
 
-    getPostsByCategory: function(category, callback){
-      postsCollection.find({"category": category}).toArray(callback);
+    addComment: function(post, comment, callback){
+      postsCollection.update({shortTitle: post.shortTitle}, {$set:{comments: [comment].concat(post.comments)}}, {}, callback);
     }
   }
 }

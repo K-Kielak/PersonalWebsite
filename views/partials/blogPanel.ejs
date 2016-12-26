@@ -11,7 +11,7 @@
     </div>
     <ul class="list-group">
       <% posts.forEach((post) => { %>
-        <li class="list-group-item"><a href="/blog/post/<%=post.title%>"> <%= post.title %> - <%= post.date %></a></li>
+        <li class="list-group-item"><a href="/blog/post/<%=post.shortTitle%>"> <%= post.title %> - <%= post.date %></a></li>
       <% }); %>
     </ul>
   </div>
