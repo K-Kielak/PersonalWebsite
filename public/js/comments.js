@@ -27,6 +27,8 @@ $(document).ready(function(){
       var commentHTML = createCommentHTML(comments[i]);
       commentsHolder.append(commentHTML);
     }
+
+    $("#comments-number").html(comments.length + " comments");
   }
 
   function createCommentHTML(comment){
@@ -35,7 +37,7 @@ $(document).ready(function(){
     userName.innerHTML = comment.name;
     var commentDate = document.createElement("p");
     commentDate.className = "pull-right";
-    commentDate.innerHTML = comment.date;
+    commentDate.innerHTML = new Date(comment.date).toDateString();
 
     var userDataDiv = document.createElement("div");
     userDataDiv.className = "clearfix";

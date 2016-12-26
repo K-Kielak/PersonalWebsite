@@ -115,9 +115,9 @@ router.get('/category/:category', function(req, res, next){
 
 });
 
-router.get('/tag/:tag', function(req, res, next){ //TODO
+router.get('/tag/:tag', function(req, res, next){
   var posts = req.posts.filter((post) => {
-    return post.tags.indexOf(req.params.tag.toLowerCase()) > -1; //TODO napraw
+    return post.tags.indexOf(req.params.tag.toLowerCase()) > -1;
   });
 
   if(posts.length > 0){

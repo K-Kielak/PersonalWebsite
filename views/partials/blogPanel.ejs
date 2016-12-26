@@ -11,7 +11,7 @@
     </div>
     <ul class="list-group">
       <% posts.forEach((post) => { %>
-        <li class="list-group-item"><a href="/blog/post/<%=post.shortTitle%>"> <%= post.title %> - <%= post.date %></a></li>
+        <li class="list-group-item"><a href="/blog/post/<%=post.shortTitle%>"> <%= post.title %> - <%= post.date.toDateString() %></a></li>
       <% }); %>
     </ul>
   </div>
@@ -40,7 +40,8 @@
           <li><a href="/blog/tag/future">Future</a></li>
           <li><a href="/blog/tag/algorithms">Algorithms</a></li>
           <li><a href="/blog/tag/data structures">Data Structures</a></li>
-          <li><a href="/blog/tag/wellbeing">Wellbeing</a></li>
+          <li><a href="/blog/tag/software architecture">Software Architecture</a></li>
+          <li><a href="/blog/tag/mathematics">Mathematics</a></li>
           <li><a href="/blog/tag/technology">Technology</a></li>
           <li><a href="/blog/tag/cybersecurity">Cybersecurity</a></li>
         </ul>
