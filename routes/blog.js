@@ -4,7 +4,7 @@ var router = express.Router();
 const POSTS_PER_REQUEST = 10;
 
 router.use(function(req, res, next){
-  req.blogDB.getPosts(POSTS_PER_REQUEST, 0, function(err, posts){
+  req.blogDB.getPosts(0, POSTS_PER_REQUEST, function(err, posts){
     if(err) {
       next(err);
     } else{
@@ -81,7 +81,7 @@ router.post('/post/:shortTitle/addComment', function(req, res, next){
   }
 });
 
-router.get('/post/:shortTitle/getComments', function(req, res, next){
+router.get('/post/:shortTitle/getComments', function(req, res, next){ //TODO add comments limit
   var post = req.posts.filter((post) => {
     return (post.shortTitle.toLowerCase() == req.params.shortTitle.toLowerCase());
   })[0];

@@ -17,8 +17,8 @@ client.connect(connection, function(err, db){
 
 module.exports = function() {
   return {
-    getPosts: function(number, start, callback){
-      postsCollection.find().toArray(callback);
+    getPosts: function(start, limit, callback){
+      postsCollection.find().toArray(callback).skip(start).limit(limit);
     },
 
     addComment: function(post, comment, callback){
