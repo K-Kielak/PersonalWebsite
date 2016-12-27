@@ -3,3 +3,4 @@ node_modules
 data/
 posts/
 public/img/blog/
+.modulusignore

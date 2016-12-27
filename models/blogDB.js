@@ -1,11 +1,10 @@
 var crypto = require("crypto"),
   type = "mongodb",
   client = require('mongodb').MongoClient,
-  dbHost = "127.0.0.1",
-  dbPort = "27017",
-  postsCollection;
+  postsCollection,
+  visitsCollection;
 
-connection = "mongodb://" + dbHost + ":" + dbPort + "/blog";
+connection = "mongodb://127.0.0.1:27017/blog";
 client.connect(connection, function(err, db){
   if(err) throw new Error("Cannot connect to database");
   else{
@@ -18,7 +17,7 @@ client.connect(connection, function(err, db){
 module.exports = function() {
   return {
     getPosts: function(start, limit, callback){
-      postsCollection.find().toArray(callback).skip(start).limit(limit);
+      postsCollection.find().skip(start).limit(limit).toArray(callback);
     },
 
     addComment: function(post, comment, callback){
