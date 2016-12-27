@@ -1,9 +1,11 @@
 var express = require('express');
 var path = require('path');
-//var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon'); //TODO dodaj favicon
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var blogDB = require('./models/blogDB')(); //TODO zmien nazwe
 
 var index = require('./routes/index');
 var blog = require('./routes/blog');
@@ -23,6 +25,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next){
+  req.blogDB = blogDB;
+  next();
+});
 
 app.use('/', index);
 app.use('/blog', blog);

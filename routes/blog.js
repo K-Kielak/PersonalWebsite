@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var blogDB = require('./../models/blogDB')();
 
 const POSTS_PER_REQUEST = 10;
 
 router.use(function(req, res, next){
-  blogDB.getPosts(POSTS_PER_REQUEST, 0,function(err, posts){
+  req.blogDB.getPosts(POSTS_PER_REQUEST, 0, function(err, posts){
     if(err) {
       next(err);
     } else{
@@ -21,6 +20,8 @@ router.get('/', function(req, res, next) {
     chosenPosts: req.posts,
     posts: req.posts
   });
+
+  req.blogDB.incrementBlogVisits()
 });
 
 router.get('/post/:shortTitle', function(req, res, next){
@@ -41,6 +42,8 @@ router.get('/post/:shortTitle', function(req, res, next){
       comments: post.comments,
       img: post.img
     });
+
+    req.blogDB.incrementPostVisits(post);
   }
   else{
 
@@ -63,7 +66,7 @@ router.post('/post/:shortTitle/addComment', function(req, res, next){
   })[0];
 
   if(post){
-    blogDB.addComment(post, comment, function(err, empty){
+    req.blogDB.addComment(post, comment, function(err, empty){
       if(err)
         next(err);
       else
