@@ -28,7 +28,7 @@ $(document).ready(function(){
       commentsHolder.append(commentHTML);
     }
 
-    $("#comments-number").html(comments.length + " comments");
+    $("#comments-number").html(comments.length + " comment(s)");
   }
 
   function createCommentHTML(comment){
@@ -37,7 +37,8 @@ $(document).ready(function(){
     userName.innerHTML = comment.name;
     var commentDate = document.createElement("p");
     commentDate.className = "pull-right";
-    commentDate.innerHTML = new Date(comment.date).toDateString();
+    var date = new Date(comment.date);
+    commentDate.innerHTML = date.getHours() + ":" + date.getMinutes() + " " + date.toDateString();
 
     var userDataDiv = document.createElement("div");
     userDataDiv.className = "clearfix";

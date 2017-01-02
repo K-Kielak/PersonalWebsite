@@ -4,7 +4,7 @@ var crypto = require("crypto"),
   postsCollection,
   visitsCollection;
 
-connection = "mongodb://127.0.0.1:27017/blog";
+connection = "mongodb://localhost:27017/blog";
 client.connect(connection, function(err, db){
   if(err) throw new Error("Cannot connect to database");
   else{
