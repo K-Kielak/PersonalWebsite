@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kacper Kielak - Blog - <%= shortTitle %>">
     <meta name="author" content="Kacper Kielak">
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/blog.css"/>
@@ -34,6 +33,7 @@
           <!--<img src="http://placehold.it/900x300" class="img-responsive">-->
           <br/>
           <p><%- intro %> </p> <!-- TODO dopracuj -->
+          <br/>
           <img src="/img/blog/<%= img %>" class="img-responsive"/>
           <br/><br/>
           <p> <%- body %></p>
@@ -62,8 +62,13 @@
           </div>
 
           <div class="col-md-12 form-group">
-              <label class="sr-only" for="email">Comment</label>
+              <label class="sr-only" for="text">Comment</label>
               <textarea name="text" class="form-control" id="text" placeholder="Comment"></textarea>
+          </div>
+
+          <div class="antispam col-md-12 form-group">
+            <label class="sr-only" for="url">Leave it empty!</label>
+            <input name="url" type="text" class="form-control" id="url" placeholder="URL">
           </div>
 
           <div class="col-md-12 form-group text-right">

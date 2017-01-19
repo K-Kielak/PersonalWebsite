@@ -4,6 +4,9 @@ $(document).ready(function(){
 
   $('#comment-form').submit(function() {
     var comment = $('#comment-form').formSerialize();
+    if(comment.url.length > 0) //antispam
+      return false;
+
     $.post('/blog/post/' + shortTitle + '/addComment', comment, function(data, status){
       if(status == 'success'){
         refreshComments();
