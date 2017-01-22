@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var helmet = require('helmet')
 
-var database = require('./models/database')() //TODO zmien nazwe
+var database = require('./models/database')()
 
 var index = require('./routes/index')
 var blog = require('./routes/blog')

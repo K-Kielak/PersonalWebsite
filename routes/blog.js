@@ -54,11 +54,27 @@ router.get('/post/:shortTitle', function(req, res, next){
   }
 })
 
+var isCommentValid = function(name, email, text){
+  if(!name || name.length < 3 || name.length > 30
+  || !email || email.length < 6 || email.length > 50
+  || !text  || text.length < 3 || text.length > 1000)
+    return false;
+
+  return true;
+}
+
+
 router.post('/post/:shortTitle/addComment', function(req, res, next){
   var name = req.body.name,
     email = req.body.email,
     text = req.body.text,
     date = new Date()
+
+  if(!isCommentValid(name, email, text)){
+    console.log("invalid comment - someone is not using form to post comment")
+    res.send("invalid comment");
+    return;
+  }
 
   var comment = {name, email, text, date}
   var post = req.posts.filter((post) => {
@@ -70,7 +86,7 @@ router.post('/post/:shortTitle/addComment', function(req, res, next){
       if(err)
         next(err)
       else
-        res.end()
+        res.send("comment added")
     })
   }
   else{
@@ -88,7 +104,6 @@ router.get('/post/:shortTitle/getComments', function(req, res, next){ //TODO add
 
   if(post){
     res.send(post.comments)
-    console.log("comments sent")
   }
   else{
     var err = new Error("There is no such post as " + req.params.title.toLowerCase() + " :(")

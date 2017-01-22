@@ -66,12 +66,13 @@
               <textarea name="text" class="form-control" id="text" placeholder="Comment"></textarea>
           </div>
 
-          <div class="antispam col-md-12 form-group">
-            <label class="sr-only" for="url">Leave it empty!</label>
-            <input name="url" type="text" class="form-control" id="url" placeholder="URL">
+          <div class="col-md-6 form-group" role="alert">
+            <p id="comment-error" class="text-danger"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="comment-error-message"></span> </p>
           </div>
 
-          <div class="col-md-12 form-group text-right">
+          <div class="col-md-6 form-group text-right">
               <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
