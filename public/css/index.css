@@ -103,6 +103,10 @@ body {
   font-size: 170px;
 }
 
+#personal-skill-logo{
+  top: 15000%;
+}
+
 .skill{
 	margin:30px 50px;
 }

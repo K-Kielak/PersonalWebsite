@@ -6,6 +6,7 @@
     <meta name="author" content="Kacper Kielak">
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/blog.css"/>
+    <link rel="stylesheet" href="/css/latex.css"/>
     <title><%= title %></title>
 </head>
 
@@ -82,7 +83,7 @@
       <input type="hidden" id="short-title" value="<%=shortTitle%>">
 
       <ul id="comments" class="comments">
-      <!--  <% comments.forEach((comment) => { %>
+      <% comments.forEach((comment) => { %>
           <li class="comment">
               <div class="clearfix">
                   <h4 class="pull-left">comment.user</h4>
@@ -92,7 +93,7 @@
                   <em>comment.text</em>
               </p>
           </li>
-        <% }); %>-->
+        <% }); %>
       </ul>
     </div>
     <div class="col-md-4">

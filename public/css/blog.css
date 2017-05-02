@@ -77,6 +77,11 @@ footer .glyphicon {
     color: #fcfcfc;
 }
 
+.img-responsive{
+	margin: 0 auto;
+
+}
+
 .antispam{
 	display: none;
 }
