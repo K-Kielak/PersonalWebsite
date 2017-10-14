@@ -96,19 +96,10 @@ body {
 	 padding: 30px 50px;
 }
 
-.logo { /*TODO zrob tak zeby dzialalo przy malych ekranach (xs)*/
-	position: absolute;
-	top: 18000%;
-	left: 30%;
-  font-size: 170px;
-}
-
-#personal-skill-logo{
-  top: 15000%;
-}
-
 .skill{
-	margin:30px 50px;
+  height: 60%;
+  width: 100%;
+	margin: 30px 50px;
 }
 
 .progress{
@@ -119,8 +110,35 @@ body {
 	font-size: 17px;
 }
 
+.project {
+  margin: 40px 20px;
+}
+
+.project-photo {
+  margin: auto;
+  max-height: 350px;
+}
+
+@media screen and (min-width: 992px) {
+  .project-photo {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .project {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.logo {
+  margin: 0 20px;
+}
+
+
 .logo-small {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .contact{
@@ -177,24 +195,22 @@ footer .glyphicon {
     color: #ffffff;
 }
 
-.extra-padding{
+.extra-padding {
   padding: 40px 5%;
 }
 
-.text-center{
+.text-center {
   text-align: center;
+}
+
+.sub-text {
+  margin-top: -10px;
 }
 
 @media screen and (max-width: 992px) {
   .col-md-4{
     text-align: center;
     margin: 25px 0;
-  }
-
-  .logo{
-    position: static;
-    font-size: 160px;
-    margin-top: 50px;
   }
 }
 
@@ -222,11 +238,6 @@ footer .glyphicon {
 
     .main-heading{
       text-align: center;
-    }
-
-    .logo{
-      font-size: 130px;
-      margin: 0;
     }
 
     .text-justify{
@@ -282,4 +293,10 @@ footer .glyphicon {
 
 .bg-grey {
   background-color: #f6f6f6;
+}
+
+@media screen and (max-width: 992px) {
+  .semi-mobile-break {
+    height: 50px;
+  }
 }

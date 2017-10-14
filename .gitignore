@@ -1,6 +1,4 @@
-trash/
 node_modules
 data/
 posts/
-.modulusignore
-mydevil/
+set-personal-db-uri

@@ -4,7 +4,7 @@ var crypto = require("crypto"),
   articlesCollection,
   visitsCollection
 
-connection = process.env.MONGODB_URI || "mongodb://localhost:27017/blog"
+connection = process.env.MONGODB_URI
 
 client.connect(connection, function(err, db){
   if(err) throw new Error("Cannot connect to database")
