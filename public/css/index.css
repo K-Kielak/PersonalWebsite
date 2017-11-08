@@ -12,6 +12,14 @@ body {
 	background: none;
 }
 
+a {
+  color: #000040;
+}
+
+a:hover {
+  color: #000040;
+}
+
 .img-bg-big {
   /* Set rules to fill background */
   min-height: 100vh;
