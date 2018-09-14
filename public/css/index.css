@@ -84,16 +84,22 @@ a:hover {
 }
 
 .jumbotron {
-  height: 95vh;
+  position: relative;
+  height: 80vh !important;
   color: #ffffff;
   text-shadow: black 0.3em 0.3em 0.3em;
   background:transparent;
 }
 
+.block-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #desc {
 	width: 100%;
-	position: absolute;
-	top: 35vh;
 }
 
 .text-mobile{
@@ -162,7 +168,7 @@ a:hover {
 }
 
 #github:link, #github:visited{
-  color: #3f3f3f;
+  color: #0077b5;
 }
 
 #github:hover{
@@ -194,8 +200,12 @@ a:hover {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  height: 80px !important;
   color: #ffffff;
-  height: 40px;
 }
 
 footer .glyphicon {
@@ -267,10 +277,6 @@ footer .glyphicon {
   }
 
  @media screen and (max-width: 480px){
-   .jumbotron{
-     height: 120vh;
-   }
-
 
    h1{
      font-size: 32px;
@@ -286,12 +292,6 @@ footer .glyphicon {
 
    h4{
      font-size: 14px;
-   }
- }
-
- @media screen and (max-width: 360px){
-   .jumbotron{
-     height: 140vh;
    }
  }
 
